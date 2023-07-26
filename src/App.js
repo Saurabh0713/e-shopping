@@ -1,24 +1,56 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react"
+import Header from './Components/Header';
+import Home from "./Components/Home";
+import Products from "./Components/Products";
+import Contact from "./Components/Contact";
+import Cart from "./Components/Cart";
+import appContext from "./context";
 
 function App() {
+  
+const [cartItems,setCartItems] = useState([])
+
+const dispatcherEvents = (actionType,payload) => {
+  switch(actionType){
+    case "ADD_ITEM":{
+      if(cartItems.includes(payload)){return}
+      payload.quantity = 1
+      payload.totalPrice = payload.price * payload.quantity
+      let item = cartItems.slice()
+      item.push(payload)
+      setCartItems(item)
+      break
+    }
+    case "DELETE_ITEM":{
+      let item = cartItems.slice()
+      item.splice(item.indexOf(payload),1)
+      setCartItems(item)
+      break
+    }
+    case "UPDATE_ITEM":{
+      let item = cartItems.slice()
+      let index = item.findIndex(value => value.id===payload.id)
+      item[index] = payload
+      setCartItems(item)
+      break
+    }
+    default:{
+      console.log("INVALID")
+    }
+  }
+}
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <appContext.Provider value={{cartItems,dispatcherEvents}}>
+
+     <div className="box-border">
+      <Header/>
+      <Home/>
+      <Products/>
+      <Cart/>
+      <Contact/>
     </div>
+    </appContext.Provider>
   );
 }
 
