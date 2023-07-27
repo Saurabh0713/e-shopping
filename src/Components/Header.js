@@ -1,6 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import appContext from "../context";
-import { Link } from "react-router-dom";
+import { Link,useLocation } from "react-router-dom";
 
 export default function Header() {
   const [menu, setMenu] = useState("hidden");
@@ -15,10 +15,27 @@ export default function Header() {
     }
   }
 
+  const [headerBg,setHeaderBg] = useState("")
+// to change header bg on scroll
+  function changeHeaderBg(){
+    if(window.scrollY>=90){
+      setHeaderBg("bg-blue-600")
+    }else{
+      setHeaderBg("")
+    }
+  }
+  window.addEventListener('scroll',changeHeaderBg)
+
+  const {pathname} = useLocation()
+  // to close the menu whenever page changes
+    useEffect(()=>{
+        setMenu("hidden")
+    },[pathname])
+
   return (
     <header className="fixed top-0 left-0 right-0 z-10">
       <nav
-        className="flex w-full items-center justify-between py-2 text-neutral-600 shadow-lg hover:text-stone-300 focus:text-neutral-700 dark:bg-gradient-to-r from-neutral-700/80 to-neutral-700/20 dark:text-neutral-200 md:flex-wrap md:justify-start "
+        className={`flex w-full items-center justify-between py-2 text-neutral-600 shadow-lg hover:text-stone-300 focus:text-neutral-700 dark:bg-gradient-to-r from-neutral-700/80 to-neutral-700/20 dark:text-neutral-200 md:flex-wrap md:justify-start ${headerBg}`}
         data-te-navbar-ref
       >
         <div className=" flex w-full flex-wrap items-center justify-between px-6">

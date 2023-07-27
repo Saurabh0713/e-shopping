@@ -35,11 +35,11 @@ export default function CartCard(props) {
   },[props.item.quantity])
 
   return (
-    <div className="m-1 md:m-2 p-1 md:p-2 w-11/12 sm:w-4/5 sm:h-40 flex items-center justify-evenly bg-neutral-100 relative">
+    <div className="mb-1 md:mb-2 p-1 md:p-2 w-11/12 sm:w-4/5 sm:h-40 flex items-center justify-evenly bg-neutral-100 relative">
       <button className="sm:w-6 w-4 bg-slate-300 hover:bg-slate-400 active:bg-slate-500 absolute top-0 right-0" onClick={handleDelete}>X</button>
       <div className="w-20 md:w-1/5 flex items-center justify-center">
         <img
-          className="w-16 md:w-32 h-16 md:h-32"
+          className="w-16 md:w-36 border border-black h-16 md:h-32"
           src={props.item.thumbnail}
           alt="product"
         ></img>

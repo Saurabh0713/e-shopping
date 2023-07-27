@@ -7,6 +7,8 @@ import Cart from "./Components/Cart";
 import appContext from "./context";
 import Buynow from "./Components/Buynow";
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
+import ScrollToTop from "./ScrollToTop";
+
 
 function App() {
   
@@ -52,7 +54,8 @@ const dispatcherEvents = (actionType,payload) => {
   return (
     <BrowserRouter>
     <appContext.Provider value={{cartItems,buyNowItem,dispatcherEvents}}>
-      <Header/>
+    <Header/>
+    <ScrollToTop/>
     <Routes>
      <Route path="/" element={<Home/>}></Route>
      <Route path="/products" element={<Products/>}></Route>

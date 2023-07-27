@@ -23,6 +23,7 @@ const refreshTotalPrice=()=>{
 
   return (
     <div className='py-14 min-h-screen w-full bg-gradient-to-b from-yellow-600 to-zinc-600 flex items-center justify-center flex-col'>
+      {cartItems.length > 0 && <h2 className=' w-4/5 m-4 text-2xl text-white'>Cart Items</h2>}
       {
           cartItems.map( element => {
             return <CartCard item={element} delete={deleteItem} refresh={refreshTotalPrice}/>

@@ -27,7 +27,7 @@ export default function Products() {
   }
 
   return (
-    <div className="py-14 w-full h-max min-h-screen bg-zinc-800 flex flex-col justify-center items-center" id="products">
+    <div className="py-14 w-full h-max min-h-screen bg-gradient-to-b from-blue-900 to-zinc-500 flex flex-col justify-center items-center" id="products">
       {products.products && (
         <div className="w-4/5 px-0 pt-0 bg-gradient-to-b from-zinc-700 to-amber-300/90 flex flex-col justify-center items-center">
           {/* .......................................................................... */}
