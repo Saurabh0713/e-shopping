@@ -18,7 +18,6 @@ useEffect(()=>{
 
 const refreshTotalPrice=()=>{
   let total = cartItems.reduce((sum,value)=>{return sum = sum + value.totalPrice},0)
-  // console.log(total,"refreeeshed")
   setCartPrice(total)
 }
 

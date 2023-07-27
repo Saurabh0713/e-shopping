@@ -5,10 +5,12 @@ import Products from "./Components/Products";
 import Contact from "./Components/Contact";
 import Cart from "./Components/Cart";
 import appContext from "./context";
+import Buynow from "./Components/Buynow";
 
 function App() {
   
 const [cartItems,setCartItems] = useState([])
+const [buyNowItem,setBuyNow] = useState([])
 
 const dispatcherEvents = (actionType,payload) => {
   switch(actionType){
@@ -34,6 +36,12 @@ const dispatcherEvents = (actionType,payload) => {
       setCartItems(item)
       break
     }
+    case "BUY_NOW":{
+      let item = []
+      item.push(payload)
+      setBuyNow(item)
+      break
+    }
     default:{
       console.log("INVALID")
     }
@@ -41,13 +49,14 @@ const dispatcherEvents = (actionType,payload) => {
 }
 
   return (
-    <appContext.Provider value={{cartItems,dispatcherEvents}}>
+    <appContext.Provider value={{cartItems,buyNowItem,dispatcherEvents}}>
 
      <div className="box-border">
       <Header/>
       <Home/>
       <Products/>
       <Cart/>
+      <Buynow/>
       <Contact/>
     </div>
     </appContext.Provider>

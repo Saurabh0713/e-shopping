@@ -7,7 +7,11 @@ export default function ProductCard(products) {
     const {dispatcherEvents} = useContext(appContext)
 
     function handleAddToCart(){
-      dispatcherEvents("ADD_ITEM",products.products)
+      dispatcherEvents ("ADD_ITEM",products.products)
+    }
+
+    function handleBuyNow(){
+      dispatcherEvents("BUY_NOW",products.products)
     }
 
   return (
@@ -29,7 +33,7 @@ export default function ProductCard(products) {
               <p className="text-slate-900 m-1">
                 Price : ${products.products.price}
               </p>
-              <button className="m-1 bg-cyan-500 active:bg-cyan-700 text-neutral-100 px-2 py-1 rounded hover:bg-cyan-600">
+              <button className="m-1 bg-cyan-500 active:bg-cyan-700 text-neutral-100 px-2 py-1 rounded hover:bg-cyan-600" onClick={handleBuyNow}>
                 Buy now
               </button>
               <button className="m-1 bg-amber-500 active:bg-amber-700 text-neutral-100 px-2 py-1 rounded hover:bg-amber-600" onClick={handleAddToCart}>
