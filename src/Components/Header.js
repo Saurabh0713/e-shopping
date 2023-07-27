@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import appContext from "../context";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const [menu, setMenu] = useState("hidden");
@@ -49,14 +50,16 @@ export default function Header() {
               </span>
             </button>
           </div>
+          <Link to="/cart">
           <button className="md:hidden">
-            cart{" "}
+            Cart{" "}
             {cartItems.length > 0 && (
               <span className="ml-2 px-1 bg-cyan-600 text-white rounded">
                 {cartItems.length}
               </span>
             )}
           </button>
+          </Link>
           <div
             className="!visible hidden grow basis-[100%] items-center md:!flex md:basis-auto"
             id="navbarSupportedContentY"
@@ -67,42 +70,42 @@ export default function Header() {
               data-te-navbar-nav-ref
             >
               <li data-te-nav-item-ref>
-                <a
-                  className="block transition duration-150 ease-in-out hover:text-slate-700 focus:text-neutral-700 disabled:text-black/30 dark:hover:text-teal-500 dark:focus:text-white md:p-2 [&.active]:text-black/90"
-                  href="#home"
+                <Link
+                  className="block transition duration-150 ease-in-out hover:text-slate-700 focus:text-neutral-700 disabled:text-black/30 dark:hover:text-amber-500 dark:focus:text-white md:p-2 [&.active]:text-black/90"
+                  to="/"
                   data-te-nav-link-ref
                   data-te-ripple-init
                   data-te-ripple-color="light"
                 >
                   Home
-                </a>
+                </Link>
               </li>
               <li data-te-nav-item-ref>
-                <a
+                <Link
                   className="block transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:hover:text-white dark:focus:text-white md:p-2 [&.active]:text-black/90"
-                  href="#about"
+                  to="/contact"
                   data-te-nav-link-ref
                   data-te-ripple-init
                   data-te-ripple-color="light"
                 >
                   Contact
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   className="block transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:hover:text-white dark:focus:text-white md:p-2 [&.active]:text-black/90"
-                  href="#products"
+                  to="/products"
                   data-te-nav-link-ref
                   data-te-ripple-init
                   data-te-ripple-color="light"
                 >
                   Products
-                </a>
+                </Link>
               </li>
               <li data-te-nav-item-ref>
-                <a
+                <Link
                   className="block transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:hover:text-white dark:focus:text-white md:p-2 [&.active]:text-black/90"
-                  href="#services"
+                  to="/cart"
                   data-te-nav-link-ref
                   data-te-ripple-init
                   data-te-ripple-color="light"
@@ -113,7 +116,7 @@ export default function Header() {
                       {cartItems.length}
                     </span>
                   )}
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -125,16 +128,16 @@ export default function Header() {
         </button>
         <ul>
           <li className="m-2 cursor-pointer ">
-            <a href="#home">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li className="m-2 cursor-pointer ">
-            <a href="#contact">Contact</a>
+            <Link to="/contact">Contact</Link>
           </li>
           <li className="m-2 cursor-pointer ">
-            <a href="#products">Products</a>
+            <Link to="/products">Products</Link>
           </li>
           <li className="m-2 cursor-pointer ">
-            <a href="#cart">Cart</a>
+            <Link to="/cart">Cart</Link>
           </li>
         </ul>
       </div>

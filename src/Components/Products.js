@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import ProductCard from "./ProductCard";
 import appContext from "../context";
+import { Link } from "react-router-dom";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -26,7 +27,7 @@ export default function Products() {
   }
 
   return (
-    <div className="py-14 w-full h-max min-h-screen bg-zinc-800 flex flex-col justify-center items-center">
+    <div className="py-14 w-full h-max min-h-screen bg-zinc-800 flex flex-col justify-center items-center" id="products">
       {products.products && (
         <div className="w-4/5 px-0 pt-0 bg-gradient-to-b from-zinc-700 to-amber-300/90 flex flex-col justify-center items-center">
           {/* .......................................................................... */}
@@ -39,9 +40,11 @@ export default function Products() {
               <p className="md:text-xl text-base p-1 md:m-2">
                 Price : ${products.products[5].price}
               </p>
+              <Link to="/buynow">
               <button className="md:m-2 m-1 bg-cyan-500 active:bg-cyan-700 text-neutral-100 px-2 py-1 rounded hover:bg-cyan-600" onClick={()=>{handleBuyNow(products.products[5])}}>
                 Buy now
               </button>
+              </Link>
               <button className="md:m-2 m-1 bg-amber-500 active:bg-amber-700 text-neutral-100 px-2 py-1 rounded hover:bg-amber-600"  onClick={()=>{handleAddToCart(products.products[5])}}>
                 Add To Cart
               </button>
@@ -68,9 +71,11 @@ export default function Products() {
               <p className="md:text-xl text-base p-1 md:m-2">
                 Price : ${products.products[8].price}
               </p>
+              <Link to="/buynow">
               <button className="md:m-2 m-1 bg-cyan-500 active:bg-cyan-700 text-neutral-100 px-2 py-1 rounded hover:bg-cyan-600" onClick={()=>{handleBuyNow(products.products[8])}}>
                 Buy now
               </button>
+              </Link>
               <button className="md:m-2 m-1 bg-amber-500 active:bg-amber-700 text-neutral-100 px-2 py-1 rounded hover:bg-amber-600"  onClick={()=>{handleAddToCart(products.products[8])}}>
                 Add To Cart
               </button>
@@ -93,9 +98,11 @@ export default function Products() {
               <p className="md:text-xl text-base p-1 md:m-2">
                 Price : ${products.products[6].price}
               </p>
+              <Link to="/buynow">
               <button className="md:m-2 m-1 bg-cyan-500 active:bg-cyan-700 text-neutral-100 px-2 py-1 rounded hover:bg-cyan-600" onClick={()=>{handleBuyNow(products.products[6])}}>
                 Buy now
               </button>
+              </Link>
               <button className="md:m-2 m-1 bg-amber-500 active:bg-amber-700 text-neutral-100 px-2 py-1 rounded hover:bg-amber-600"  onClick={()=>{handleAddToCart(products.products[6])}}>
                 Add To Cart
               </button>

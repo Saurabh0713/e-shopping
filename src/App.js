@@ -6,6 +6,7 @@ import Contact from "./Components/Contact";
 import Cart from "./Components/Cart";
 import appContext from "./context";
 import Buynow from "./Components/Buynow";
+import {BrowserRouter,Routes,Route} from 'react-router-dom'
 
 function App() {
   
@@ -49,17 +50,18 @@ const dispatcherEvents = (actionType,payload) => {
 }
 
   return (
+    <BrowserRouter>
     <appContext.Provider value={{cartItems,buyNowItem,dispatcherEvents}}>
-
-     <div className="box-border">
       <Header/>
-      <Home/>
-      <Products/>
-      <Cart/>
-      <Buynow/>
-      <Contact/>
-    </div>
+    <Routes>
+     <Route path="/" element={<Home/>}></Route>
+     <Route path="/products" element={<Products/>}></Route>
+     <Route path="/cart" element={<Cart/>}></Route>
+     <Route path="/buynow" element={<Buynow/>}></Route>
+     <Route path="/contact" element={<Contact/>}></Route>
+    </Routes>
     </appContext.Provider>
+    </BrowserRouter>
   );
 }
 

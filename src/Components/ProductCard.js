@@ -1,5 +1,6 @@
 import React,{useContext} from 'react'
 import appContext from '../context'
+import { Link } from 'react-router-dom'
 
 export default function ProductCard(products) {
     // console.log(products)
@@ -33,9 +34,11 @@ export default function ProductCard(products) {
               <p className="text-slate-900 m-1">
                 Price : ${products.products.price}
               </p>
+              <Link to="/buynow">
               <button className="m-1 bg-cyan-500 active:bg-cyan-700 text-neutral-100 px-2 py-1 rounded hover:bg-cyan-600" onClick={handleBuyNow}>
                 Buy now
               </button>
+              </Link>
               <button className="m-1 bg-amber-500 active:bg-amber-700 text-neutral-100 px-2 py-1 rounded hover:bg-amber-600" onClick={handleAddToCart}>
                 Add to Cart
               </button>

@@ -14,8 +14,8 @@ export default function Buynow() {
 
   return (
     <div className='py-14 min-h-screen w-full bg-gradient-to-b from-green-600 to-zinc-600 flex items-center justify-center flex-col'>
+        {buyNowItem.length>0 &&  <>
         <h1 className='w-3/4 sm:w-1/2 text-2xl text-white m-4'>Selected Item</h1>
-        {buyNowItem.length>0 &&  
         <div className="m-1 md:m-2 p-1 md:p-2 w-3/4 sm:w-1/2 sm:h-40 flex items-center justify-evenly bg-neutral-100">
       <div className="w-20 md:w-2/5 flex items-center justify-center">
         <img
@@ -31,6 +31,7 @@ export default function Buynow() {
       </div>
            
     </div> 
+    </>
 }
 {buyNowItem.length>0 && 
  <>
