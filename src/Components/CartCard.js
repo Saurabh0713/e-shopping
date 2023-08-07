@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import appContext from "../context";
 
 export default function CartCard(props) {
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(props.item.quantity);
   const {dispatcherEvents} = useContext(appContext)
 
   function handleQuantityChange(event) {
@@ -26,8 +26,7 @@ export default function CartCard(props) {
   }
 
   function handleDelete(){
-    // console.log(props.delete)
-    props.delete(props.item)
+    dispatcherEvents("DELETE_ITEM",props.item)
   }
 
   useEffect(()=>{

@@ -18,17 +18,19 @@ const [buyNowItem,setBuyNow] = useState([])
 const dispatcherEvents = (actionType,payload) => {
   switch(actionType){
     case "ADD_ITEM":{
-      if(cartItems.includes(payload)){return}
+      let item = cartItems.slice()
+      let index = item.findIndex(value => value.id===payload.id)
+      if(index!==-1){return}
       payload.quantity = 1
       payload.totalPrice = payload.price * payload.quantity
-      let item = cartItems.slice()
       item.push(payload)
       setCartItems(item)
       break
     }
     case "DELETE_ITEM":{
       let item = cartItems.slice()
-      item.splice(item.indexOf(payload),1)
+      let index = item.findIndex(value => value.id===payload.id)
+      item.splice(index,1)
       setCartItems(item)
       break
     }

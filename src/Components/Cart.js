@@ -4,19 +4,15 @@ import CartCard from './CartCard'
 
 export default function Cart() {
   const {cartItems} = useContext(appContext)
-  const {dispatcherEvents} = useContext(appContext)
-
   const [totalCartPrice,setCartPrice] = useState(0)
- 
-function deleteItem(item){
-  dispatcherEvents("DELETE_ITEM",item)
-}
 
 useEffect(()=>{
+  // updating cart price whenever an item is deleted
   refreshTotalPrice()
 },[cartItems.length])
 
 const refreshTotalPrice=()=>{
+  // finding total cart price
   let total = cartItems.reduce((sum,value)=>{return sum = sum + value.totalPrice},0)
   setCartPrice(total)
 }
@@ -26,7 +22,7 @@ const refreshTotalPrice=()=>{
       {cartItems.length > 0 && <h2 className=' w-4/5 m-4 text-2xl text-white'>Cart Items</h2>}
       {
           cartItems.map( element => {
-            return <CartCard item={element} delete={deleteItem} refresh={refreshTotalPrice}/>
+            return <CartCard item={element} refresh={refreshTotalPrice}/>
           })
         }
       { cartItems.length > 0 ? <div className='m-4 p-5 sm:text-lg font-semibold bg-stone-300 w-4/5 flex justify-between items-center'>
