@@ -7,12 +7,10 @@ export default function Cart() {
   const [totalCartPrice,setCartPrice] = useState(0)
 
 useEffect(()=>{
-  // updating cart price whenever an item is deleted
   refreshTotalPrice()
 },[cartItems.length])
 
 const refreshTotalPrice=()=>{
-  // finding total cart price
   let total = cartItems.reduce((sum,value)=>{return sum = sum + value.totalPrice},0)
   setCartPrice(total)
 }

@@ -2,23 +2,21 @@ import React, { useState, useContext, useEffect } from "react";
 import appContext from "../context";
 
 export default function CartCard(props) {
-  const [count, setCount] = useState(props.item.quantity);
+  
   const {dispatcherEvents} = useContext(appContext)
 
   function handleQuantityChange(event) {
     if (event.target.id === "inc") {
-      let quantity = count + 1;
-      setCount(quantity);
+      let quantity = props.item.quantity + 1;
       props.item.quantity = quantity;
       props.item.totalPrice = props.item.price * props.item.quantity;
       dispatcherEvents("UPDATE_ITEM",props.item)
     } else {
-      let quantity = count;
+      let quantity = props.item.quantity;
       if (quantity === 1) {
         return;
       }
       quantity = quantity - 1;
-      setCount(quantity);
       props.item.quantity = quantity;
       props.item.totalPrice = props.item.price * props.item.quantity;
       dispatcherEvents("UPDATE_ITEM",props.item)
